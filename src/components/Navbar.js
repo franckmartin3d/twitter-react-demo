@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
     function Navbar() {
     return (
@@ -6,7 +7,7 @@ import React from 'react'
         
     <ul className="nav nav nav-fill my-4">
     <li className="nav-item">
-        <a href="/src/home.html"><button type="button" className="btn btn-secondary">Home</button></a>
+        <Link to="/"><button type="button" className="btn btn-secondary">Home</button></Link>
     </li>
     <li className="nav-item">
         {/* <!-- search --> */}
@@ -19,7 +20,7 @@ import React from 'react'
         {/* <!-- /search --> */}
     </li>
     <li className="nav-item">
-        <a href="/base/random.html"><button type="button" className="btn btn-secondary">Random</button></a>
+    <Link to="/Random"><button type="button" className="btn btn-secondary">Random</button></Link>
     </li>
   </ul>
 

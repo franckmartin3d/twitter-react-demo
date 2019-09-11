@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
     function Jumbotron() {
     return (
@@ -9,8 +10,8 @@ import React from 'react'
                 <p>This is a simple app that use the react framework to showcase some twitter account</p>
                 
                 <div className="btn-group shadow" role="group" data-aos="fade">
-                    <a className="btn btn-secondary text-left text-white-50" role="button" href="/search">Search Twitter</a>
-                    <a className="btn btn-secondary text-white-50" role="button" href="/base/random.html" >Random Twitter</a></div>
+                    <Link className="btn btn-secondary text-left text-white-50" role="button" to="/search">Search Twitter</Link>
+                    <Link className="btn btn-secondary text-white-50" role="button" to="/random" >Random Twitter</Link></div>
                 </div>
             </div>
     );

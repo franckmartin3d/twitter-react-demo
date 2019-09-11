@@ -2,15 +2,15 @@ import React,{ Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Middle from './components/search/Middle';
-import Navbar from './components/Navbar';
+import RandomNavbar from './components/random/RandomNavbar';
 import Footer from './components/Footer';
 
-class Search extends Component {
+class Random extends Component {
   render(){
     return (
       <body>
         <div class ="container">
-          <Navbar />
+          <RandomNavbar />
           <Middle />
           <Footer />
         </div>
@@ -20,4 +20,4 @@ class Search extends Component {
   
 }
 
-export default Search;
+export default Random;
