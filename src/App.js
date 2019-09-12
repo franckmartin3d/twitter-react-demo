@@ -9,6 +9,7 @@ import {
 // App components
 import Home from './Home';
 import Search from './Search';
+import Random from './Random';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     <BrowserRouter>
        <Route  exact path="/" component={Home}/>
        <Route path="/Search" component={Search}/>
+       <Route path="/Random" component={Random}/>
 
     </BrowserRouter>
     
