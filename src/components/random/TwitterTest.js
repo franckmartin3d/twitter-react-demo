@@ -12,7 +12,7 @@ function randombody() {
         <h1 className="display-4">Button Test Page</h1>
         <p>Testing how to display tweets</p>
         <button
-          onClick={handleClick()}
+          onClick={handleClick}
           type="button"
           className="btn btn-secondary"
         >
