@@ -9,7 +9,7 @@ class Search extends Component {
   render(){
     return (
       <body>
-        <div class ="container">
+        <div className ="container">
           <Navbar />
           <Middle />
           <Footer />

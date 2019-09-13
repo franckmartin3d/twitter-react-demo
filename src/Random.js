@@ -1,23 +1,20 @@
-import React,{ Component } from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Middle from './components/search/Middle';
-import RandomNavbar from './components/random/RandomNavbar';
-import Footer from './components/Footer';
+import React, { Component } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TwitterTest from "./components/random/TwitterTest";
+import RandomNavbar from "./components/random/RandomNavbar";
+import Footer from "./components/Footer";
 
 class Random extends Component {
-  render(){
+  render() {
     return (
-      <body>
-        <div class ="container">
-          <RandomNavbar />
-          <Middle />
-          <Footer />
-        </div>
-      </body>
-     );
+      <div className="Container">
+        <RandomNavbar />
+        <TwitterTest />
+        <Footer />
+      </div>
+    );
   }
-  
 }
 
 export default Random;
