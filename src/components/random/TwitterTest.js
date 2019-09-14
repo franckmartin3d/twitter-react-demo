@@ -1,6 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Card from "./Card";
 
+// Fake twitter data
 const tdata = {
   created_at: "Wed Oct 10 20:19:24 +0000 2018",
   id: 1050118621198921728,
@@ -11,6 +13,9 @@ const tdata = {
   entities: {}
 };
 
+
+
+// displaying tweet
 function displaytweet() {
   const card = document.getElementById("text");
 
@@ -31,7 +36,6 @@ const Body = props => {
     <div className="container">
       <div>
         <div className="jumbotron jumbotron-fluid text-center border-primary">
-        
           <h4 className="display-4">{props.title}</h4>
           <p>Testing how to display tweets</p>
           {/* second prop test + state test */}
@@ -44,17 +48,22 @@ const Body = props => {
             Test Button
           </button>
         </div>
+        <div>
+          {/* CARDS */}
 
-        {/* Card */}
-        <div className="card">
-          <img src="/img/jay.png" className="card-img-top" alt="twiter user" />
-          <div className="card-body">
-            <h5 className="card-title">Twitter Account</h5>
-            <p id="text" className="card-text"></p>
-          </div>
+
+          {props.initialTweetData.map(
+            tweet =>   <Card
+            user={tweet.user}
+            tweet={tweet.tweet}
+            date={tweet.tweetDate}
+          />
+          )}
+       
         </div>
       </div>
     </div>
   );
 };
+
 export default Body;
