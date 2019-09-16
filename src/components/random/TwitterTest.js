@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "./Card";
 
@@ -30,34 +30,50 @@ function displaytweet() {
   });
 }
 
-// Rendering function jsx
-const Body = props => {
-  return (
-    <div className="container">
+class Body extends React.Component {
+  // State
+ state = {
+      user: "default name",
+      tweet: "This is an original tweet",
+      date: "defult 0/0/0"
+    };
+  
+  displayTweet = () =>{
+    console.log("displaying tweet")
+    this.setState({
+      user: "new user",
+      tweet: "new tweet ",
+      date: "new 9/09/99"
+    })
+  }
+
+
+  render(){
+    return(
+      <div className="container">
       <div>
         <div className="jumbotron jumbotron-fluid text-center border-primary">
-          <h4 className="display-4">{props.title}</h4>
+          <h4 className="display-4">{this.props.title}</h4>
           <p>Testing how to display tweets</p>
           {/* second prop test + state test */}
-          <p> Number of tweets: {props.numberOfClick}</p>
+          <p> Number of tweets: {this.props.numberOfClick}</p>
           <button
-            onClick={displaytweet}
+            onClick={this.displayTweet}
             type="button"
             className="btn btn-secondary"
           >
-            Test Button
+            Display tweet
           </button>
         </div>
+
+        {/* CARDS */}
         <div>
-          {/* CARDS */}
-
-
-          {props.initialTweetData.map(
+          {this.props.initialTweetData.map(
             tweet =>   <Card
-            user={tweet.user}
-            tweet={tweet.tweet}
-            date={tweet.tweetDate}
-            key={tweet.id.toString()}
+            user={this.state.user}
+            tweet={this.state.tweet}
+            date={this.state.date}
+            // key={this.props.id.toString()}
           />
           )}
        
@@ -65,6 +81,13 @@ const Body = props => {
       </div>
     </div>
   );
-};
+    
+  }
+}
+  
+    
+   
+
+
 
 export default Body;

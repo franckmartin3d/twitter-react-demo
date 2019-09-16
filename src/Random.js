@@ -27,7 +27,7 @@ const data =[
       }
 ];
 
-class Random extends Component {
+class Random extends React.Component {
   render() {
     return (
       <div className="Container">
