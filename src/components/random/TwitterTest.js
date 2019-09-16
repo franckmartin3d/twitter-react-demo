@@ -39,7 +39,7 @@ const Body = props => {
           <h4 className="display-4">{props.title}</h4>
           <p>Testing how to display tweets</p>
           {/* second prop test + state test */}
-          <p>Testing button click state: {props.numberOfClick}</p>
+          <p> Number of tweets: {props.numberOfClick}</p>
           <button
             onClick={displaytweet}
             type="button"
@@ -57,6 +57,7 @@ const Body = props => {
             user={tweet.user}
             tweet={tweet.tweet}
             date={tweet.tweetDate}
+            key={tweet.id.toString()}
           />
           )}
        

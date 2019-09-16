@@ -10,17 +10,20 @@ const data =[
   {
   user: "Donal Trump",
   tweet: "i am an idiot",
-  tweetDate: "9/12/2019"
+  tweetDate: "9/12/2019",
+  id: 1
   },
   {
     user: "Devil",
     tweet: " I am the Neigbour of the beast",
-    tweetDate: "6/06/666"
+    tweetDate: "6/06/666",
+    id: 2
     },
     {
       user: "Barrack",
       tweet: " I was born in honolulu!!",
-      tweetDate: "1/02/2011"
+      tweetDate: "1/02/2011",
+      id: 3
       }
 ];
 
@@ -33,7 +36,7 @@ class Random extends Component {
           // props
           initialTweetData ={data}
           title="Tweet  Test Page (prop test)"
-          numberOfClick={0}
+          numberOfClick={data.length}
          
         />
         <Footer />
