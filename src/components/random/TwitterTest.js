@@ -4,7 +4,6 @@ import Card from "./Card";
 
 class Body extends React.Component {
   // State
-
   state = {
     cards: [
       {
@@ -26,13 +25,20 @@ class Body extends React.Component {
         id: 3
       }
     ],
-    displayCards: false,
+    displaySingleCard: false,
+    displayAllCards: false,
     cardToDisplay: 0
   };
 
-  changedisplayCards = () => {
+  isDisplayAllCards = () => {
     this.setState({
-      displayCards: !this.state.displayCards
+      displayAllCards: !this.state.displayAllCards
+    });
+  };
+
+  isDisplaySingleCard = () => {
+    this.setState({
+      displaySingleCard: !this.state.displaySingleCard
     });
   };
 
@@ -42,9 +48,6 @@ class Body extends React.Component {
   }));
 };
   
- 
-  
-
   render() {
     let cardNumber = this.state.cardToDisplay ;
     console.log("cardnumber:" + cardNumber);
@@ -59,14 +62,14 @@ class Body extends React.Component {
             <p> Number of Cards: {this.state.cards.length} </p>
             {/* Display all button */}
             <button
-              onClick={this.changedisplayCards}
+              onClick={this.isDisplayAllCards}
               type="button"
               className="btn btn-secondary">
               Display All Cards
             </button>
           {/* Display single tweet */}
           <button
-              onClick={this.displaySingleTweet}
+              onClick={this.isDisplaySingleCard}
               type="button"
               className="btn btn-secondary">
               Single card
@@ -74,17 +77,18 @@ class Body extends React.Component {
             {/* display single card */}
 
             {console.log(this.state.cardToDisplay)}
+            {this.state.displaySingleCard === true &&
             <div><Card
                   user={this.state.cards[cardNumber].user}
                   tweet={this.state.cards[cardNumber].tweet}
                   date={this.state.cards[cardNumber].date}
                 /></div>
-             
+            }
 
             {/* Display all Cards */}
             {console.log(this.state.changeyCards)}
 
-            {this.state.displayCards === true &&
+            {this.state.displayAllCards === true &&
               this.state.cards.map(cards => (
                 <Card
                   user={cards.user}
