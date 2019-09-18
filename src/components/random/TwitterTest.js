@@ -74,6 +74,16 @@ class Body extends React.Component {
               className="btn btn-secondary">
               Single card
             </button>
+
+            {/* addcard button */}
+            <button
+              onClick={this.isDisplaySingleCard}
+              type="button"
+              className="btn btn-secondary">
+              +1 card
+            </button>
+
+
             {/* display single card */}
 
             {console.log(this.state.cardToDisplay)}
@@ -84,6 +94,8 @@ class Body extends React.Component {
                   date={this.state.cards[cardNumber].date}
                 /></div>
             }
+            {/* Add 1 card to display */}
+           
 
             {/* Display all Cards */}
             {console.log(this.state.changeyCards)}
