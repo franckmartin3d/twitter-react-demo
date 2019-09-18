@@ -1,9 +1,6 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "./Card";
-
 
 class Body extends React.Component {
   // State
@@ -39,50 +36,68 @@ class Body extends React.Component {
     });
   };
 
-  displayTweet = () => {
-    console.log("displaying tweet");
-    this.setState({
-      user: "new user!",
-      tweet: "new tweet ",
-      date: "new 9/09/99"
-    });
-  };
+  displaySingleTweet = () => {
+    this.setState( prevState =>({  
+        cardToDisplay: prevState.cardToDisplay + 1  
+  }));
+};
+  
+ 
+  
 
   render() {
-
-
-    
+    let cardNumber = this.state.cardToDisplay ;
+    console.log("cardnumber:" + cardNumber);
     return (
       <div className="container">
+
+        {/* Test Body */}
         <div>
           <div className="jumbotron jumbotron-fluid text-center border-primary">
             <h4 className="display-4"> {this.props.title} </h4>
             <p> Testing how to display tweets </p>
-            {/* second prop test + state test */}
             <p> Number of Cards: {this.state.cards.length} </p>
+            {/* Display all button */}
             <button
-              onClick={(this.changedisplayCards)}
+              onClick={this.changedisplayCards}
               type="button"
-              className="btn btn-secondary"
-            >
-              Display Cards
+              className="btn btn-secondary">
+              Display All Cards
             </button>
+          {/* Display single tweet */}
+          <button
+              onClick={this.displaySingleTweet}
+              type="button"
+              className="btn btn-secondary">
+              Single card
+            </button>
+            {/* display single card */}
+
+            {console.log(this.state.cardToDisplay)}
+            <div><Card
+                  user={this.state.cards[cardNumber].user}
+                  tweet={this.state.cards[cardNumber].tweet}
+                  date={this.state.cards[cardNumber].date}
+                /></div>
+             
+
+            {/* Display all Cards */}
             {console.log(this.state.changeyCards)}
 
-            { this.state.displayCards === true && this.state.cards.map(cards => (
-              <Card
-                user={cards.user}
-                tweet={cards.tweet}
-                date={cards.date}
-                // key={this.props.id.toString()}
-              />
-            ))}
+            {this.state.displayCards === true &&
+              this.state.cards.map(cards => (
+                <Card
+                  user={cards.user}
+                  tweet={cards.tweet}
+                  date={cards.date}
+                />
+              ))}
+            {/* Display all Cards */}
           </div>
         </div>
       </div>
     );
   }
 }
-
 
 export default Body;
