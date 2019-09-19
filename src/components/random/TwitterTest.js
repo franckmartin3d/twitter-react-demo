@@ -43,44 +43,37 @@ class Body extends React.Component {
     });
   };
 
-
-
-  addSingleCard = () => {
-    this.setState( prevState =>
-      ({cardToDisplay: prevState.cardToDisplay + 1
+  modifyCardToDisplayState = () => {
+    this.setState(prevState => ({
+      cardToDisplay: prevState.cardToDisplay + 1
     }));
     console.log("changes in addSinglecard" + this.state.cardToDisplay);
-  }
+  };
 
   addOneCard = () => {
     let cardIndex = this.state.cardToDisplay;
     let cardArray = this.state.cards;
 
-    for (let i = 0; i <= (cardIndex) ; i++) {
+    for (let i = 0; i <= cardIndex; i++) {
       const element = cardArray[i];
       console.log(element);
 
-    //   <p>How do i print this</p>
-    // <div><Card
-    //   user={cardArray[i].user}
-    //   tweet={cardArray[i].tweet}
-    //   date={cardArray[i].date}
-    // /></div>
-
-      
+      //   How do i display this???<<<<<<<<<
+      // <div><Card
+      //   user={cardArray[i].user}
+      //   tweet={cardArray[i].tweet}
+      //   date={cardArray[i].date}
+      // /></div>
     }
-    
-    this.addSingleCard();
-  }
 
-
+    this.modifyCardToDisplayState();
+  };
 
   render() {
-    let cardNumber = this.state.cardToDisplay ;
+    let cardNumber = this.state.cardToDisplay;
     console.log("cardnumber:" + cardNumber);
     return (
       <div className="container">
-
         {/* Test Body */}
         <div>
           <div className="jumbotron jumbotron-fluid text-center border-primary">
@@ -91,14 +84,16 @@ class Body extends React.Component {
             <button
               onClick={this.isDisplayAllCards}
               type="button"
-              className="btn btn-secondary">
+              className="btn btn-secondary"
+            >
               Display All Cards
             </button>
-          {/* Display single tweet */}
-          <button
+            {/* Display single tweet */}
+            <button
               onClick={this.isDisplaySingleCard}
               type="button"
-              className="btn btn-secondary">
+              className="btn btn-secondary"
+            >
               Single card
             </button>
 
@@ -106,35 +101,31 @@ class Body extends React.Component {
             <button
               onClick={this.addOneCard}
               type="button"
-              className="btn btn-secondary">
+              className="btn btn-secondary"
+            >
               +1 card
             </button>
-           
+
             {/*  render one card*/}
 
             {/* display single card */}
 
-           
-            {this.state.displaySingleCard === true &&
-            <div><Card
+            {this.state.displaySingleCard === true && (
+              <div>
+                <Card
                   user={this.state.cards[cardNumber].user}
                   tweet={this.state.cards[cardNumber].tweet}
                   date={this.state.cards[cardNumber].date}
-                /></div>
-            }
+                />
+              </div>
+            )}
             {/* Add 1 card to display */}
-           
 
             {/* Display all Cards */}
-           
 
             {this.state.displayAllCards === true &&
               this.state.cards.map(cards => (
-                <Card
-                  user={cards.user}
-                  tweet={cards.tweet}
-                  date={cards.date}
-                />
+                <Card user={cards.user} tweet={cards.tweet} date={cards.date} />
               ))}
             {/* Display all Cards */}
           </div>
