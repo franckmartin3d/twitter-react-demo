@@ -49,13 +49,28 @@ class Body extends React.Component {
     this.setState( prevState =>
       ({cardToDisplay: prevState.cardToDisplay + 1
     }));
+    console.log("changes in addSinglecard" + this.state.cardToDisplay);
   }
 
-  
-  renderSingleCard= () =>{
-    return(){
+  addOneCard = () => {
+    let cardIndex = this.state.cardToDisplay;
+    let cardArray = this.state.cards;
 
+    for (let i = 0; i <= (cardIndex) ; i++) {
+      const element = cardArray[i];
+      console.log(element);
+
+    //   <p>How do i print this</p>
+    // <div><Card
+    //   user={cardArray[i].user}
+    //   tweet={cardArray[i].tweet}
+    //   date={cardArray[i].date}
+    // /></div>
+
+      
     }
+    
+    this.addSingleCard();
   }
 
 
@@ -89,17 +104,17 @@ class Body extends React.Component {
 
             {/* addcard button */}
             <button
-              onClick={this.addSingleCard}
+              onClick={this.addOneCard}
               type="button"
               className="btn btn-secondary">
               +1 card
             </button>
-            {console.log(this.state.cardToDisplay)}
+           
             {/*  render one card*/}
 
             {/* display single card */}
 
-            {console.log(this.state.cardToDisplay)}
+           
             {this.state.displaySingleCard === true &&
             <div><Card
                   user={this.state.cards[cardNumber].user}
@@ -111,7 +126,7 @@ class Body extends React.Component {
            
 
             {/* Display all Cards */}
-            {console.log(this.state.changeyCards)}
+           
 
             {this.state.displayAllCards === true &&
               this.state.cards.map(cards => (
