@@ -26,6 +26,7 @@ class Body extends React.Component {
       }
     ],
     displaySingleCard: false,
+    displayNextCard: false,
     displayAllCards: false,
     cardToDisplay: 0
   };
@@ -42,12 +43,23 @@ class Body extends React.Component {
     });
   };
 
-  displaySingleTweet = () => {
-    this.setState( prevState =>({  
-        cardToDisplay: prevState.cardToDisplay + 1  
-  }));
-};
+
+
+  addSingleCard = () => {
+    this.setState( prevState =>
+      ({cardToDisplay: prevState.cardToDisplay + 1
+    }));
+  }
+
   
+  renderSingleCard= () =>{
+    return(){
+
+    }
+  }
+
+
+
   render() {
     let cardNumber = this.state.cardToDisplay ;
     console.log("cardnumber:" + cardNumber);
@@ -77,12 +89,13 @@ class Body extends React.Component {
 
             {/* addcard button */}
             <button
-              onClick={this.isDisplaySingleCard}
+              onClick={this.addSingleCard}
               type="button"
               className="btn btn-secondary">
               +1 card
             </button>
-
+            {console.log(this.state.cardToDisplay)}
+            {/*  render one card*/}
 
             {/* display single card */}
 
