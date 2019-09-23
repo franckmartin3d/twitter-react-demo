@@ -5,6 +5,7 @@ import Card from "./Card";
 class Body extends React.Component {
   // State
   state = {
+    selectedCards:[],
     cards: [
       {
         user: "Donal Trump",
@@ -25,15 +26,29 @@ class Body extends React.Component {
         id: 3
       }
     ],
-    displaySingleCard: false,
-    displayNextCard: false,
-    displayAllCards: false,
-    cardToDisplay: 0
+    displayCards: false,
   };
 
   isDisplayAllCards = () => {
+    let cardsArray = this.state.cards;
+    let newArray = []
+    for (let i = 0; i < cardsArray.length; i++) {
+      const element = cardsArray[i];
+      console.log(element);
+      this.setState({
+        selectedCards: [].concat(this.state.selectedCards).push(element)
+      });
+    }
+
     this.setState({
-      displayAllCards: !this.state.displayAllCards
+      displayCards: !this.state.displayCards,
+    });
+    console.log(this.state.selectedCards);
+  };
+
+  isDisplaySingleCard = () => {
+    this.setState({
+      displaySingleCard: !this.state.displaySingleCard
     });
   };
 
@@ -43,35 +58,8 @@ class Body extends React.Component {
     });
   };
 
-  modifyCardToDisplayState = () => {
-    this.setState(prevState => ({
-      cardToDisplay: prevState.cardToDisplay + 1
-    }));
-    console.log("changes in addSinglecard" + this.state.cardToDisplay);
-  };
-
-  addOneCard = () => {
-    let cardIndex = this.state.cardToDisplay;
-    let cardArray = this.state.cards;
-
-    for (let i = 0; i <= cardIndex; i++) {
-      const element = cardArray[i];
-      console.log(element);
-
-      //   How do i display this???<<<<<<<<<
-      // <div><Card
-      //   user={cardArray[i].user}
-      //   tweet={cardArray[i].tweet}
-      //   date={cardArray[i].date}
-      // /></div>
-    }
-
-    this.modifyCardToDisplayState();
-  };
-
   render() {
-    let cardNumber = this.state.cardToDisplay;
-    console.log("cardnumber:" + cardNumber);
+ 
     return (
       <div className="container">
         {/* Test Body */}
@@ -103,23 +91,9 @@ class Body extends React.Component {
               type="button"
               className="btn btn-secondary"
             >
-              +1 card
+            Add a card
             </button>
 
-            {/*  render one card*/}
-
-            {/* display single card */}
-
-            {this.state.displaySingleCard === true && (
-              <div>
-                <Card
-                  user={this.state.cards[cardNumber].user}
-                  tweet={this.state.cards[cardNumber].tweet}
-                  date={this.state.cards[cardNumber].date}
-                />
-              </div>
-            )}
-            {/* Add 1 card to display */}
 
             {/* Display all Cards */}
 
@@ -127,6 +101,7 @@ class Body extends React.Component {
               this.state.cards.map(cards => (
                 <Card user={cards.user} tweet={cards.tweet} date={cards.date} />
               ))}
+
             {/* Display all Cards */}
           </div>
         </div>
