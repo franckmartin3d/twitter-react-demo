@@ -97,7 +97,7 @@ class Body extends React.Component {
 
             {/* Display all Cards */}
 
-            {this.state.displayAllCards === true &&
+            {this.state.displayCards === true &&
               this.state.cards.map(cards => (
                 <Card user={cards.user} tweet={cards.tweet} date={cards.date} />
               ))}
