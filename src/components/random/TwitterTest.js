@@ -27,6 +27,7 @@ class Body extends React.Component {
       }
     ],
     displayCards: false,
+    singleCard:1,
   };
 
   isDisplayAllCards = () => {
@@ -34,28 +35,38 @@ class Body extends React.Component {
     let newArray = []
     for (let i = 0; i < cardsArray.length; i++) {
       const element = cardsArray[i];
-      console.log(element);
-      this.setState({
-        selectedCards: [].concat(this.state.selectedCards).push(element)
-      });
+      newArray.push(element)
     }
-
     this.setState({
       displayCards: !this.state.displayCards,
+      selectedCards: newArray
     });
     console.log(this.state.selectedCards);
   };
 
-  isDisplaySingleCard = () => {
+  resetCard = () => {
+    let resetArr = []
     this.setState({
-      displaySingleCard: !this.state.displaySingleCard
-    });
-  };
+      selectedCards: resetArr
+  });
+  }
 
   isDisplaySingleCard = () => {
-    this.setState({
-      displaySingleCard: !this.state.displaySingleCard
-    });
+    this.resetCard();
+
+    let cardsArray = this.state.cards;
+    let number = this.state.singleCard;
+    let newArray = []
+    for (let i = 0; i < number ; i++) {
+      const element = cardsArray[i];
+      console.log(element);
+      newArray.push(element)
+    }
+    this.setState(prevState => ({
+      displayCards: true,
+      selectedCards: newArray,
+      singleCard: prevState.singleCard + 1
+    }));
   };
 
   render() {
@@ -98,7 +109,7 @@ class Body extends React.Component {
             {/* Display all Cards */}
 
             {this.state.displayCards === true &&
-              this.state.cards.map(cards => (
+              this.state.selectedCards.map(cards => (
                 <Card user={cards.user} tweet={cards.tweet} date={cards.date} />
               ))}
 
