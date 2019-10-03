@@ -6,30 +6,19 @@ class Body extends React.Component {
   // State
   state = {
     selectedCards:[],
-    cards: [
-      {
-        user: "Donal Trump",
-        tweet: "i am an idiot",
-        date: "9/12/2019",
-        id: 1
-      },
-      {
-        user: "Devil",
-        tweet: " I am the Neigbour of the beast",
-        date: "6/06/666",
-        id: 2
-      },
-      {
-        user: "Barrack",
-        tweet: " I was born in honolulu!!",
-        date: "1/02/2011",
-        id: 3
-      }
-    ],
+    cards: [],
     displayCards: false,
     singleCard:1,
   };
 
+  // life cycle of component
+  componentDidMount(){
+    fetch('/api/list')
+    .then(res => res.json())
+    .then(cards => this.setState({cards}, ()=> console.log("cards fetched from internal API", cards)));
+  }
+
+  //display all cards at once
   isDisplayAllCards = () => {
     let cardsArray = this.state.cards;
     let newArray = []
@@ -44,23 +33,35 @@ class Body extends React.Component {
     console.log(this.state.selectedCards);
   };
 
+  //reset the cards array selected
   resetCard = () => {
     let resetArr = []
     this.setState({
       selectedCards: resetArr
-  });
+    });
   }
 
+  //display one card
   isDisplaySingleCard = () => {
     this.resetCard();
-
     let cardsArray = this.state.cards;
     let number = this.state.singleCard;
     let newArray = []
+
     for (let i = 0; i < number ; i++) {
       const element = cardsArray[i];
-      console.log(element);
-      newArray.push(element)
+
+      // to make sure the button doesnt it undefine
+      if (element == undefined){
+        this.setState({
+          singleCard: 1
+        })
+      }
+      else {
+        console.log(element);
+        newArray.push(element)
+      }
+      
     }
     this.setState(prevState => ({
       displayCards: true,
