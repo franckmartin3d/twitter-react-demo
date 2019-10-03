@@ -99,11 +99,11 @@ class Body extends React.Component {
 
             {/* addcard button */}
             <button
-              onClick={this.addOneCard}
+              onClick={this.resetCard}
               type="button"
               className="btn btn-secondary"
             >
-            Add a card
+            Clear
             </button>
 
 
