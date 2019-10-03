@@ -6,7 +6,7 @@ const Card = props => {
     <div className="card mb-3">
       <div className="row no-gutters">
         <div className="col-md-4">
-          <img src="./img/ecma.png" className="card-img" alt="User" />
+          <img src={props.profile} className="card-img-top" className="card-img" alt="User" />
         </div>
         <div className="col-md-8">
           <div className="card-body">

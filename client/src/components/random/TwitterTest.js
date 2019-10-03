@@ -111,7 +111,7 @@ class Body extends React.Component {
 
             {this.state.displayCards === true &&
               this.state.selectedCards.map(cards => (
-                <Card user={cards.user} tweet={cards.tweet} date={cards.date} />
+                <Card profile={cards.user.profile_image_url} user={cards.user.screen_name} tweet={cards.text} date={cards.created_at} />
               ))}
 
             {/* Display all Cards */}
