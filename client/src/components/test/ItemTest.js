@@ -6,11 +6,11 @@ class ItemTest extends Component {
 constructor(){
     super();
     this.state = {
-        items: {"employees":[
+        items: "employees":[
             { "firstName":"John", "lastName":"Doe" },
             { "firstName":"Anna", "lastName":"Smith" },
             { "firstName":"Peter", "lastName":"Jones" }
-          ]}
+          ]
     }
 }
 
