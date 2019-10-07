@@ -12,7 +12,7 @@ class Home extends Component {
             <Jumbotron />
 
             <Footer />
-            {/* <ItemTest /> */}
+            <ItemTest />
         </div>
      );
   }

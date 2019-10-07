@@ -31,14 +31,14 @@ function gotData(err,data,response){
   // send endpoint to my client 
   app.get('/api/list', (req,res)=>{
 
-    
+      
       res.json(twitterCard);
   });
   
 }
 
 // //  app.use(express.static(path.join(__dirname,'views')))
-// app.use(express.static(__dirname + '/client/build/'))
+app.use(express.static(__dirname + '/client/build/'))
 
 // app.get ('/api/twitter',function(req, res){
 
