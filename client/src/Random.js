@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TwitterTest from "./components/random/TwitterTest";
-import RandomNavbar from "./components/random/RandomNavbar";
+import Navbar from './components/Navbar';
 import Footer from "./components/Footer";
 
 // array of objects 
@@ -11,17 +11,18 @@ import Footer from "./components/Footer";
 class Random extends React.Component {
   render() {
     return (
-      <div className="Container">
-        <RandomNavbar />
+      <body>
+        <div className="Container">
+        <Navbar />
         <TwitterTest
-          
-          
           title="Tweet  Test Page (prop test)"
           
-         
         />
-        <Footer />
+      
       </div>
+      <Footer />
+      </body>
+      
     );
   }
 }

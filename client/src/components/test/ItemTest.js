@@ -6,20 +6,17 @@ class ItemTest extends Component {
 constructor(){
     super();
     this.state = {
-        items: "employees":[
-            { "firstName":"John", "lastName":"Doe" },
-            { "firstName":"Anna", "lastName":"Smith" },
-            { "firstName":"Peter", "lastName":"Jones" }
-          ]
+        items: []
     }
+
 }
 
 // life cycle of component
-// componentDidMount(){
-//     fetch('/api/list')
-//     .then(res => res.json())
-//     .then(items => this.setState({items}, ()=> console.log("items fetched", items)));
-// }
+componentDidMount(){
+    fetch('/api/list')
+    .then(res => res.json())
+    .then(items => this.setState({items}, ()=> console.log("items fetched", items)));
+}
 
 test(){
     console.log(this.state.items);
@@ -29,7 +26,11 @@ test(){
         return (
             <div>
                 <h2>Tweet test</h2>
-                <p>{this.state.items}</p>
+                <ul>
+                    {this.state.items.map(items =>
+                    <li key={items.id}>{items.text} {items.user.screen_name}</li>
+                    )}
+                </ul>
             </div>
         )
     }

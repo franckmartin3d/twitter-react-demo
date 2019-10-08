@@ -15,43 +15,20 @@ const T = new Twit({
 
 })
 
-// serach twitter param
-var twitParam = {
-  q: 'banana',
-  count:3
-}
+app.get("/api/list", (req, res) => {
+  var searchTwitterParam = {
+    q: "banana",
+    count: 3
+  };
 
-// get  tweet data from twitter api
-T.get('search/tweets', twitParam, gotData);
- 
-// log the response
-function gotData(err,data,response){
-  var twitterCard = data
-  console.log(data)
-  // send endpoint to my client 
-  app.get('/api/list', (req,res)=>{
-
-      
-      res.json(twitterCard);
+  // get  tweet data from twitter api
+  T.get("search/tweets", searchTwitterParam, function(err, data, response) {
+    res.json(data.statuses);
   });
-  
-}
+});
 
 // //  app.use(express.static(path.join(__dirname,'views')))
 app.use(express.static(__dirname + '/client/build/'))
-
-// app.get ('/api/twitter',function(req, res){
-
-//   axios.get('https://api.twitter.com/1.1/search/tweets.json?q=nasa')
-//   .then(function (response) {
-//     // handle success
-//     res.send(response.data);
-//   })
-//   .catch(function (error) {
-//     // handle error
-//     console.log(error);
-//   });
-// });
 
 const port = 5000;
 

@@ -1,11 +1,41 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import Card from "/Card";
+
+
 
 function middle() {
+
+
+
+
   return (
     <div className="jumbotron jumbotron-fluid text-center border-primary">
-      <h1 className="display-4">SHOWCASE</h1>
-      <p>Tweets pulled from search</p>
+      <h1 className="display-5">Twitter Search</h1>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            {/* <!-- search --> */}
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+              />
+              <div className="input-group-append">
+                <button className="btn btn-secondary" type="submit">
+                  Go
+                </button>
+              </div>
+            </div>
+            {/* <!-- /search --> */}
+          </div>
+          <div class="col-sm"></div>
+        </div>
+      </div>
+
       {/* <!-- Grid 3 rows x 6 columns (2 arrow 12 tweet)  -->*/}
 
       <div>

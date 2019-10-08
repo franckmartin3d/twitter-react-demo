@@ -10,17 +10,10 @@ import {Link} from 'react-router-dom';
         <Link to="/"><button type="button" className="btn btn-secondary">Home</button></Link>
     </li>
     <li className="nav-item">
-        {/* <!-- search --> */}
-            <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Search"/>
-                    <div className="input-group-append">
-                      <button className="btn btn-secondary" type="submit">Go</button>
-                    </div>
-            </div>
-        {/* <!-- /search --> */}
+        <Link to="/search"><button type="button" className="btn btn-secondary">Tweet Searcher</button></Link>
     </li>
     <li className="nav-item">
-    <Link to="/Random"><button type="button" className="btn btn-secondary">Random</button></Link>
+    <Link to="/Random"><button type="button" className="btn btn-secondary">Random Tweets</button></Link>
     </li>
   </ul>
 
