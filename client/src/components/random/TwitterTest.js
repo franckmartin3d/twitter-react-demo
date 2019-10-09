@@ -52,7 +52,7 @@ class Body extends React.Component {
       const element = cardsArray[i];
 
       // to make sure the button doesnt it undefine
-      if (element == undefined){
+      if (element === undefined){
         this.setState({
           singleCard: 1
         })
