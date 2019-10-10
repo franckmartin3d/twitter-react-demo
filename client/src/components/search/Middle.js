@@ -47,31 +47,59 @@ state = {
 };
  
 // life cycle of component
-// componentDidMount(){
-//   fetch('/api/list')
-//   .then(res => res.json())
-//   .then(cards => this.setState({cards}, ()=> console.log("cards fetched from internal API", cards," cards state:", this.state.cards)));
-// }
+GetCards(){
+  fetch('/api/list')
+  .then(res => res.json())
+  .then(cards => this.setState({cards}, ()=> console.log("cards fetched from internal API", cards," cards state:", this.state.cards)));
+}
   
 
   render(){
     return(
 
-        <div className="col-md m-2">
-          {/* <!-- card --> */}
-          <Card 
-                profile={this.state.cards[5].user} 
-                user={this.state.cards[5].user} 
-                tweet={this.state.cards[5].tweet} 
-                date={this.state.cards[5].date} />
-          {/* <!-- /card --> */}
+      <div className="jumbotron jumbotron-fluid text-center border-primary">
+      <h1 className="display-4">SHOWCASE</h1>
+      
+        {/* <!-- search --> */}
+      <div className ="row">
+      <div className="col-md"> </div>
+
+        <div className="col-md">
+          <div className="input-group mb-3">
+                      <input type="text" className="form-control" placeholder="Search"/>
+                      <div className="input-group-append">
+                        <button 
+                          className="btn btn-secondary" 
+                          type="submit"
+                          onClick={this.GetCards}>
+                          Go</button>
+                      </div>
+          </div>
         </div>
 
+        <div className="col-md"> </div>
+
+
+      </div>
+        {/* <!-- /search --> */}
+
+    
+        <div className="row">
+          {this.state.cards.map(cards => (
+            <div className = "col">
+            <Card 
+                  profile={cards.id} 
+                  user={cards.user} 
+                  tweet={cards.tweet} 
+                  date={cards.date} />
+                 
+            </div>
+             ))}
+      </div>
+      </div>
+
     );
-  } 
-    
-    
-   
+  }
 }
 
 export default Middle;
