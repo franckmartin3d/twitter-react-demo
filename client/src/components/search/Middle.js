@@ -11,17 +11,40 @@ state = {
   cards: []
 };
  
-// life cycle of component
-getCards = () =>{
-  fetch('/api/list')
-  .then(res => res.json())
-  .then(data => this.setState({cards:data}))
+// get cards non async
+// getCards = () =>{
+//   // refactor fetch
+//   fetch('/api/list')
   
-  console.log(this.state.cards);
-}
-testGetCard(){
+//   //get the response and set its structure
+//   .then(response=>{
+//     console.log(response);
+//     return response.json();
+//   })
+//   //use the data in structure
+//   .then(json =>{
+//     console.log(json);
+//     this.setState({cards:json})
+//   })
+//   //handle errors
+//   .catch(error =>{
+//     console.error(error);
+//   });
+// }
+  catchData = async () =>{
+    try{
+      const response= await fetch('/api/list');
+      const data = await response.json();
+      this.setState({cards:data})
+    }
+    catch(error){
+      console.log("there is an error:", error)
+      console.error(error);
+    }
+       
   
 }
+
 
   render(){
     return(
@@ -40,7 +63,7 @@ testGetCard(){
                         <button 
                           className="btn btn-secondary" 
                           type="submit"
-                          onClick={this.getCards}>
+                          onClick={this.catchData}>
                           Go</button>
                       </div>
           </div>
