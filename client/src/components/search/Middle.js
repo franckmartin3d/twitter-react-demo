@@ -8,51 +8,20 @@ class Middle extends React.Component {
 
 // State
 state = {
-  cards: [ {
-    user: "Donal Trump",
-    tweet: "i am an idiot",
-    date: "9/12/2019",
-    id: 1
-  },
-  {
-    user: "Devil",
-    tweet: " I am the Neigbour of the beast",
-    date: "6/06/666",
-    id: 2
-  },
-  {
-    user: "Barrack",
-    tweet: " I was born in honolulu!!",
-    date: "1/02/2011",
-    id: 3
-  },
-  {
-    user: "scorpion",
-    tweet: "get over here",
-    date: "1/02/2011",
-    id: 4
-  },
-  {
-    user: "ovechkin",
-    tweet: "I score machine",
-    date: "1/02/2011",
-    id: 5
-  },
-  {
-    user: "Canuck",
-    tweet: "we suck",
-    date: "1/02/2011",
-    id: 6
-  }]
+  cards: []
 };
  
 // life cycle of component
-GetCards(){
+getCards = () =>{
   fetch('/api/list')
   .then(res => res.json())
-  .then(cards => this.setState({cards}, ()=> console.log("cards fetched from internal API", cards," cards state:", this.state.cards)));
-}
+  .then(data => this.setState({cards:data}))
   
+  console.log(this.state.cards);
+}
+testGetCard(){
+  
+}
 
   render(){
     return(
@@ -71,7 +40,7 @@ GetCards(){
                         <button 
                           className="btn btn-secondary" 
                           type="submit"
-                          onClick={this.GetCards}>
+                          onClick={this.getCards}>
                           Go</button>
                       </div>
           </div>
@@ -88,10 +57,10 @@ GetCards(){
           {this.state.cards.map(cards => (
             <div className = "col">
             <Card 
-                  profile={cards.id} 
-                  user={cards.user} 
-                  tweet={cards.tweet} 
-                  date={cards.date} />
+                  profile={cards.user.profile_image_url} 
+                  user={cards.user.screen_name} 
+                  tweet={cards.text} 
+                  date={cards.created_at} />
                  
             </div>
              ))}
