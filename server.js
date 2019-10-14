@@ -16,51 +16,14 @@ const T = new Twit({
 })
 
 app.get("/api/list", (req, res) => {
+
+  console.log(req.query);
   var searchTwitterParam = {
-    q: "NHL",
+    q: req.query.q,
     count: 6
   };
-  //for test
-  // const cards = [
-  //   {
-  //     user: "Donal Trump",
-  //     tweet: "i am an idiot",
-  //     date: "9/12/2019",
-  //     id: 1
-  //   },
-  //   {
-  //     user: "Devil",
-  //     tweet: " I am the Neigbour of the beast",
-  //     date: "6/06/666",
-  //     id: 2
-  //   },
-  //   {
-  //     user: "Barrack",
-  //     tweet: " I was born in honolulu!!",
-  //     date: "1/02/2011",
-  //     id: 3
-  //   },
-  //   {
-  //     user: "scorpion",
-  //     tweet: "get over here",
-  //     date: "1/02/2011",
-  //     id: 4
-  //   },
-  //   {
-  //     user: "ovechkin",
-  //     tweet: "I score machine",
-  //     date: "1/02/2011",
-  //     id: 5
-  //   },
-  //   {
-  //     user: "Canuck",
-  //     tweet: "we suck",
-  //     date: "1/02/2011",
-  //     id: 6
-  //   }
-  // ];
-  // res.json(cards);
-  //get  tweet data from twitter api
+
+  console.log(searchTwitterParam)
   T.get("search/tweets", searchTwitterParam, function(err, data, response) {
     res.json(data.statuses);
   });

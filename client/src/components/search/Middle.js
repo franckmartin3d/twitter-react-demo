@@ -1,39 +1,26 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "../random/Card";
-
+import withQuery from 'with-query';
 
 
 class Middle extends React.Component {
 
 // State
 state = {
-  cards: []
+  cards: [],
+  searchValue: ''
 };
  
-// get cards non async
-// getCards = () =>{
-//   // refactor fetch
-//   fetch('/api/list')
-  
-//   //get the response and set its structure
-//   .then(response=>{
-//     console.log(response);
-//     return response.json();
-//   })
-//   //use the data in structure
-//   .then(json =>{
-//     console.log(json);
-//     this.setState({cards:json})
-//   })
-//   //handle errors
-//   .catch(error =>{
-//     console.error(error);
-//   });
-// }
+//Send data to api
   catchData = async () =>{
+    let search = this.state.searchValue
+    console.log("searching for",this.state.searchValue);
     try{
-      const response= await fetch('/api/list');
+      const response= await fetch(withQuery('api/list', {
+        q: search,
+      }))
+
       const data = await response.json();
       this.setState({cards:data})
     }
@@ -42,8 +29,19 @@ state = {
       console.error(error);
     }
        
-  
 }
+
+//Handle search input
+
+  handleSearchChange = (event) =>{
+    this.setState({searchValue: event.target.value});
+}
+
+//handle search input submit
+
+  handleSearchSubmit =() =>{
+    console.log(this.state.searchValue);
+  }
 
 
   render(){
@@ -58,7 +56,13 @@ state = {
 
         <div className="col-md">
           <div className="input-group mb-3">
-                      <input type="text" className="form-control" placeholder="Search"/>
+                      <input 
+                      type="text" 
+                      value={this.state.searchValue}
+                      onChange={this.handleSearchChange}
+                      className="form-control" 
+                      placeholder="Search"/>
+
                       <div className="input-group-append">
                         <button 
                           className="btn btn-secondary" 
