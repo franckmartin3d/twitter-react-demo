@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "./Card";
 
-class Body extends React.Component {
+class RandomRender extends React.Component {
   // State
   state = {
     selectedCards:[],
@@ -122,4 +122,4 @@ class Body extends React.Component {
   }
 }
 
-export default Body;
+export default RandomRender;

@@ -1,50 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "../random/Card";
-import withQuery from 'with-query';
 
 
-class Middle extends React.Component {
+class Searchrender extends React.Component {
 
-// State
-state = {
-  cards: [],
-  searchValue: ''
-};
- 
-//Send data to api
-  catchData = async () =>{
-    let search = this.state.searchValue
-    console.log("searching for",this.state.searchValue);
-    try{
-      const response= await fetch(withQuery('api/list', {
-        q: search,
-      }))
-
-      const data = await response.json();
-      this.setState({cards:data})
-    }
-    catch(error){
-      console.log("there is an error:", error)
-      console.error(error);
-    }
-       
-}
-
-//Handle search input
-
-  handleSearchChange = (event) =>{
-    this.setState({searchValue: event.target.value});
-}
-
-//handle search input submit
-
-  handleSearchSubmit =() =>{
-    console.log(this.state.searchValue);
-  }
-
-
-  render(){
+  render(props){
     return(
 
       <div className="jumbotron jumbotron-fluid text-center border-primary">
@@ -58,8 +19,8 @@ state = {
           <div className="input-group mb-3">
                       <input 
                       type="text" 
-                      value={this.state.searchValue}
-                      onChange={this.handleSearchChange}
+                      value={this.props.searchValue}
+                      onChange={this.props.handleSearchChange}
                       className="form-control" 
                       placeholder="Search"/>
 
@@ -67,7 +28,7 @@ state = {
                         <button 
                           className="btn btn-secondary" 
                           type="submit"
-                          onClick={this.catchData}>
+                          onClick={this.props.catchData}>
                           Go</button>
                       </div>
           </div>
@@ -81,7 +42,7 @@ state = {
 
     
         <div className="row">
-          {this.state.cards.map(cards => (
+          {this.props.cards.map(cards => (
             <div className = "col">
             <Card 
                   profile={cards.user.profile_image_url} 
@@ -98,4 +59,4 @@ state = {
   }
 }
 
-export default Middle;
+export default Searchrender;
