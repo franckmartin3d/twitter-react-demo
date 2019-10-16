@@ -6,6 +6,14 @@ import Card from "../random/Card";
 class Searchrender extends React.Component {
 
   render(props){
+
+
+    if (this.props.arrow){
+      var button = <div className="row"> 
+                  <p>Left/Right</p>
+                </div>
+    }
+
     return(
 
       <div className="jumbotron jumbotron-fluid text-center border-primary">
@@ -38,9 +46,8 @@ class Searchrender extends React.Component {
 
 
       </div>
+      
         {/* <!-- /search --> */}
-
-    
         <div className="row">
           {this.props.cards.map(cards => (
             <div className = "col">
@@ -52,10 +59,15 @@ class Searchrender extends React.Component {
                  
             </div>
              ))}
+          {/*  */}
+        <div>{button}</div>
+       
       </div>
       </div>
+     
 
     );
+  
   }
 }
 

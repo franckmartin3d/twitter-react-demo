@@ -20,7 +20,7 @@ app.get("/api/list", (req, res) => {
   console.log(req.query);
   var searchTwitterParam = {
     q: req.query.q,
-    count: 6
+    count: 12
   };
 
   console.log(searchTwitterParam)
