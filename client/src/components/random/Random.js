@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RandomRender from "./components/random/RandomRender";
-import Navbar from './components/Navbar';
-import Footer from "./components/Footer";
+import RandomRender from "./RandomRender";
+import Navbar from '../Navbar';
+import Footer from "../Footer";
 
 // array of objects 
 
@@ -15,7 +14,7 @@ class Random extends React.Component {
         <div className="Container">
         <Navbar />
         <RandomRender
-          title="Tweet  Test Page (prop test)"
+          title="Random Tweet Page"
           
         />
       

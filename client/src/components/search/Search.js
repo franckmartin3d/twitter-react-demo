@@ -1,9 +1,8 @@
 import React,{ Component } from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Searchrender from './components/search/searchRender';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Searchrender from './searchRender';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 import withQuery from 'with-query';
 
 

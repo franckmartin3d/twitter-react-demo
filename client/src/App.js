@@ -5,8 +5,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // App components
 import Home from "./Home";
-import Search from "./Search";
-import Random from "./Random";
+import Search from "./components/search/Search";
+import Random from "./components/random/Random";
 
 class App extends Component {
   render() {

@@ -8,11 +8,11 @@ class Searchrender extends React.Component {
   render(props){
 
 
-    if (this.props.arrow){
-      var button = <div className="row"> 
-                  <p>Left/Right</p>
-                </div>
-    }
+    // if (this.props.arrow){
+    //   var button = <div className="row"> 
+    //               <p>Left/Right</p>
+    //             </div>
+    // }
 
     return(
 
@@ -60,7 +60,7 @@ class Searchrender extends React.Component {
             </div>
              ))}
           {/*  */}
-        <div>{button}</div>
+        {/* <div>{button}</div> */}
        
       </div>
       </div>
