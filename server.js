@@ -20,12 +20,14 @@ app.get("/api/list", (req, res) => {
   console.log(req.query);
   var searchTwitterParam = {
     q: req.query.q,
-    count: 12
+    count: 6,
+    result_type: 'popular',
   };
 
   console.log(searchTwitterParam)
   T.get("search/tweets", searchTwitterParam, function(err, data, response) {
     res.json(data.statuses);
+    // console.log("final data",data.statuses);
   });
 });
 

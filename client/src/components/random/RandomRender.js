@@ -8,37 +8,64 @@ class RandomRender extends React.Component {
   // State
   state = {
     cards: [],
-    searchValue: 'first',
+    searchValue: '',
     displayCards: false,
   };
 
  //Send data to api
  catchData = async () =>{
   let search = this.state.searchValue
-  console.log("searching for",this.state.searchValue);
   try{
     const response= await fetch(withQuery('api/list', {
       q: search,
     }))
 
     const data = await response.json();
-    this.setState({cards:data});
+    this.setState({cards:data,displayCards:true});
   }
   catch(error){
     console.log("there is an error:", error)
     console.error(error);
   } 
-
+console.log(this.state.cards)
 }
 
+
+//SELECTION OF PEOPLE
   selectElon = () =>{
     this.setState({
-      searchValue: "Elon Musk",
+      searchValue: "from:elonmusk",
     });
-    this.catchData();
-    
+    console.log(this.state.searchValue);
   }
 
+  selectNasa = () =>{
+    this.setState({
+      searchValue: "from:NASA",
+    });
+    console.log(this.state.searchValue);
+  }
+
+  selectNeil = () =>{
+    this.setState({
+      searchValue: "from:neiltyson",
+    });
+    console.log(this.state.searchValue);
+  }
+
+  selectCap = () =>{
+    this.setState({
+      searchValue: "from:Cmdr_Hadfield",
+    });
+    console.log(this.state.searchValue);
+  }
+
+  displayCards =() =>{
+    this.setState({
+          displayCards: true
+        });
+
+  }
 
   //reset the cards array selected
   resetCard = () => {
@@ -58,37 +85,44 @@ class RandomRender extends React.Component {
             <h4 className="display-4"> {this.props.title} </h4>
             <p> Display Tweet From these User </p>
             <p> Number of Cards: {this.state.cards.length} </p>
+
             {/* Display all button */}
             <button
-              onClick={this.selectElon}
+              onClick={(event) => {this.selectElon();this.catchData();}}
               type="button"
               className="btn btn-secondary"
             >
               Elon Musk
             </button>
-            {/* Display single tweet */}
             <button
-              onClick={this.isDisplaySingleCard}
+              onClick={(event) => {this.selectNasa();this.catchData();}}
               type="button"
               className="btn btn-secondary"
             >
               N.A.S.A
             </button>
 
-            {/* addcard button */}
             <button
-              onClick={this.resetCard}
+                onClick={(event) => {this.selectNeil();this.catchData();}}
               type="button"
               className="btn btn-secondary"
             >
             Neil D
             </button>
 
+            <button
+                onClick={(event) => {this.selectCap();this.catchData();}}
+              type="button"
+              className="btn btn-secondary"
+            >
+            Chris Hadfield
+            </button>
+
 
             {/* Display all Cards */}
           <div className="row">
           {this.state.displayCards === true &&
-              this.props.cards.map(cards => (
+              this.state.cards.map(cards => (
             <div className = "col">
             <Card 
                   profile={cards.user.profile_image_url} 
