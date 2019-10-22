@@ -1,22 +1,26 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Card from 'react-bootstrap/Card'
 
-const Card = props => {
+const Cards = props => {
   return (
-    <div className="card">
-      <img
-        src={props.profile}
-        width="50"
-        className="card-img-top"
-        className="card-img"
-        alt="User"
-      />
-      <div className="card-body">
-        <h5 className="card-title">{props.user}</h5>
-        <p className="card-text">S{props.tweet}</p>
-        <small className="text-muted">{props.date}</small>
-      </div>
-    </div>
+    <Card border="success" style={{ width: '18rem' }}>
+ 
+    <Card.Img variant="top" src={props.profile} roundedCircle />
+    <Card.Body>
+      <Card.Title>{props.user}</Card.Title>
+
+      <Card.Text>
+      {props.tweet}
+      </Card.Text>
+
+      <Card.Text>
+      {props.date}
+      </Card.Text>
+
+    </Card.Body>
+  </Card>
   );
 };
-export default Card;
+export default Cards;
+

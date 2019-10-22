@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "../random/Card";
+import Cards from "../random/Card";
 
 
 class Searchrender extends React.Component {
@@ -51,7 +51,7 @@ class Searchrender extends React.Component {
         <div className="row">
           {this.props.cards.map(cards => (
             <div className = "col">
-            <Card 
+            <Cards
                   profile={cards.user.profile_image_url} 
                   user={cards.user.screen_name} 
                   tweet={cards.text} 
