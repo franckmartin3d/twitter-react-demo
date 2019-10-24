@@ -1,21 +1,40 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Jumbotron from 'react-bootstrap/Jumbotron'
+import Button from 'react-bootstrap/Button'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
-
-    function Jumbotron() {
+    function Jumbo(props) {
     return (
+        <Jumbotron>
+            <h1>{props.title}</h1>
+            <p>
+               {props.para}
+            </p>
+            <p>
+            <ButtonToolbar>
+
+                <Button 
+                    variant="outline-dark"
+                    size="lg"
+                    as= {Link} to="/search">
+                    Search Twitter
+                </Button>
+               '  '     
+                <Button 
+                    variant="outline-dark"
+                    size="lg"
+                    as= {Link} to="/random">
+                    Random Twitter
+                </Button>
+
+            </ButtonToolbar>
+            </p>
+        </Jumbotron>
         
-        <div className="bg-white">
-            <div className="jumbotron jumbotron-fluid text-center border-primary" >
-                <h1>Twitter Showcase</h1>
-                <p>This is a simple app that use the react framework to showcase some twitter account</p>
-                
-                <div className="btn-group shadow" role="group" data-aos="fade">
-                    <Link className="btn btn-secondary text-left text-white-50" role="button" to="/search">Search Twitter</Link>
-                    <Link className="btn btn-secondary text-white-50" role="button" to="/random" >Random Twitter</Link></div>
-                </div>
-            </div>
     );
 }
-export default Jumbotron;
+export default Jumbo;
+
+
