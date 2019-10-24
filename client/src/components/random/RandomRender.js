@@ -8,11 +8,9 @@ class RandomRender extends React.Component {
   render(props) {
  
     return (
-      <div className="container">
-        {/* Test Body */}
-        <div>
+     
           <div className="jumbotron jumbotron-fluid text-center border-primary">
-            <h4 className="display-4"> {this.props.title} </h4>
+            <h1 className="display-4"> {this.props.title} </h1>
             <p> Display Tweet From these User </p>
             <p> Number of Cards: {this.props.cards.length} </p>
 
@@ -20,14 +18,14 @@ class RandomRender extends React.Component {
             <button
               onClick={(event) => {this.props.selectElon();this.props.catchData()}}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary mx-4"
             >
               Elon Musk
             </button>
             <button
               onClick={(event) => {this.props.selectNasa();this.props.catchData()}}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary mx-4"
             >
               N.A.S.A
             </button>
@@ -35,7 +33,7 @@ class RandomRender extends React.Component {
             <button
                 onClick={(event) => {this.props.selectNeil();this.props.catchData()}}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary mx-4"
             >
             Neil D
             </button>
@@ -43,7 +41,7 @@ class RandomRender extends React.Component {
             <button
                 onClick={(event) => {this.props.selectCap();this.props.catchData();}}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary mx-4"
             >
             Chris Hadfield
             </button>
@@ -65,8 +63,7 @@ class RandomRender extends React.Component {
             </div>
             {/* Display all Cards */}
           </div>
-        </div>
-      </div>
+     
     );
   }
 }

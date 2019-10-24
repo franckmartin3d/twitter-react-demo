@@ -16,7 +16,7 @@ class Random extends React.Component {
    state = {
     cards: [],
     searchValue: '',
-    displayCards: false,
+    displayCards: true,
   };
 
 //Send data to api
@@ -86,8 +86,8 @@ class Random extends React.Component {
 
   render() {
     return (
-      <body>
-        <div className="Container">
+      
+      <div className="Container">
         <Navbar />
         <RandomRender
           title="Random Tweet Page"
@@ -106,8 +106,8 @@ class Random extends React.Component {
         />
       
       </div>
-      <Footer />
-      </body>
+     
+   
       
     );
   }

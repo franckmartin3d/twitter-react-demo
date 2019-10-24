@@ -59,7 +59,7 @@ class Search extends Component {
   render(){
     return (
       
-        <div className ="container">
+        <div className ="Container">
           <Navbar />
           <Searchrender 
             cards={this.state.cards}

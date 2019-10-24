@@ -8,12 +8,6 @@ class Searchrender extends React.Component {
   render(props){
 
 
-    // if (this.props.arrow){
-    //   var button = <div className="row"> 
-    //               <p>Left/Right</p>
-    //             </div>
-    // }
-
     return(
 
       <div className="jumbotron jumbotron-fluid text-center border-primary">
