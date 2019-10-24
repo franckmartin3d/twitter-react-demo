@@ -28,13 +28,14 @@ class Random extends React.Component {
       }))
 
       const data = await response.json();
-      this.setState({cards:data,displayCards:true});
+      this.setState({cards:data});
     }
     catch(error){
       console.log("there is an error:", error)
       console.error(error);
     } 
   console.log(this.state.cards)
+  this.setState({displayCards:true});
   }
 
   //SELECTION OF PEOPLE

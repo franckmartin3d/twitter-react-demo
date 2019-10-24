@@ -18,7 +18,7 @@ class RandomRender extends React.Component {
 
             {/* Display all button */}
             <button
-              onClick={(event) => {this.props.selectElon();this.props.catchData();this.props.displayAllCards()}}
+              onClick={(event) => {this.props.selectElon();this.props.catchData()}}
               type="button"
               className="btn btn-secondary"
             >
