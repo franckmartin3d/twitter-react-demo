@@ -15,54 +15,83 @@ class Random extends React.Component {
    // State
    state = {
     cards: [],
-    searchValue: '',
+    searchValue: [],
     displayCards: true,
+
+    user: ["from:elonmusk","from:NASA","from:neiltyson","from:Cmdr_Hadfield"],
+    userStateArray: ['elonTweet','nasaTweet',"neilTweet",'capTweet'],
+    elonTweet:[],
+    neilTweet:[],
+    nasaTweet:[],
+    capTweet:[],
+
   };
 
-//Send data to api
-  catchData = async () =>{
-    let search = this.state.searchValue
+//  fetch on load all tweets
+componentDidMount = async ()=> {
+
+
+  for (let i = 0; i < this.state.user.length; i++) {
+    let search = this.state.user[i];
+    const state = this.state.userStateArray[i];
+
     try{
       const response= await fetch(withQuery('api/list', {
         q: search,
       }))
-
+  
       const data = await response.json();
-      this.setState({cards:data});
+
+      this.setState({[state]:data});
     }
     catch(error){
       console.log("there is an error:", error)
       console.error(error);
     } 
-  console.log(this.state.cards)
-  this.setState({displayCards:true});
+    console.log(state)
+    this.setState({displayCards:true});
+    }
+    console.log('elonTweet: ', this.state.elonTweet);
+    console.log('neil: ', this.state.neilTweet);
+    console.log('nasaTweet: ', this.state.nasaTweet);
+    console.log('cap: ', this.state.cap);
+  }
+
+  
+
+  logall = () =>{
+    console.log("elon:",this.state.elonTweet)
   }
 
   //SELECTION OF PEOPLE
   selectElon = () =>{
     this.setState({
-      searchValue: "from:elonmusk",
+      searchValue: [],
+      searchValue: this.state.elonTweet,
     });
     console.log(this.state.searchValue);
   }
 
   selectNasa = () =>{
     this.setState({
-      searchValue: "from:NASA",
+      searchValue: [],
+      searchValue: this.state.nasaTweet,
     });
     console.log(this.state.searchValue);
   }
 
   selectNeil = () =>{
     this.setState({
-      searchValue: "from:neiltyson",
+      searchValue: [],
+      searchValue: this.state.neilTweet,
     });
     console.log(this.state.searchValue);
   }
 
   selectCap = () =>{
     this.setState({
-      searchValue: "from:Cmdr_Hadfield",
+      searchValue: [],
+      searchValue: this.state.capTweet,
     });
     console.log(this.state.searchValue);
   }
@@ -92,6 +121,9 @@ class Random extends React.Component {
         <RandomRender
           title="Random Tweet Page"
           cards={this.state.cards}
+
+          elon={this.state.cards}
+
           searchValue={this.state.searchValue}
           displayCards = {this.state.displayCards}
           

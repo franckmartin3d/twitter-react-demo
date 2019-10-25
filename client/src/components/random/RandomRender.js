@@ -16,14 +16,14 @@ class RandomRender extends React.Component {
 
             {/* Display all button */}
             <button
-              onClick={(event) => {this.props.selectElon();this.props.catchData()}}
+              onClick={(event) => {this.props.selectElon();this.props.displayAllCards()}}
               type="button"
               className="btn btn-secondary mx-4"
             >
               Elon Musk
             </button>
             <button
-              onClick={(event) => {this.props.selectNasa();this.props.catchData()}}
+              onClick={(event) => {this.props.selectNasa();this.props.displayAllCards()}}
               type="button"
               className="btn btn-secondary mx-4"
             >
@@ -31,7 +31,7 @@ class RandomRender extends React.Component {
             </button>
 
             <button
-                onClick={(event) => {this.props.selectNeil();this.props.catchData()}}
+                onClick={(event) => {this.props.selectNeil();this.props.displayAllCards()}}
               type="button"
               className="btn btn-secondary mx-4"
             >
@@ -39,7 +39,7 @@ class RandomRender extends React.Component {
             </button>
 
             <button
-                onClick={(event) => {this.props.selectCap();this.props.catchData();}}
+                onClick={(event) => {this.props.selectCap();this.props.displayAllCards()}}
               type="button"
               className="btn btn-secondary mx-4"
             >
@@ -50,7 +50,7 @@ class RandomRender extends React.Component {
             {/* Display all Cards */}
           <div className="row">
           {this.props.displayCards === true &&
-              this.props.cards.map(cards => (
+              this.props.searchValue.map(cards => (
             <div className = "col">
             <Cards
                   profile={cards.user.profile_image_url} 
