@@ -16,7 +16,7 @@ export class Images extends Component {
 
     render(props) {
 
-        //check for props to load / failsafe
+        //check for props to load before rendering / failsafe
         if(!this.props.elon[0])
         return <Container>error</Container>;
 
