@@ -1,146 +1,163 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import RandomRender from "./RandomRender";
-import Navbar from '../Navbar';
+import Result from "./RandomRender";
+import Images from "./Image";
+
+import Navbar from "../Navbar";
 import Footer from "../Footer";
 
-import withQuery from 'with-query';
+import withQuery from "with-query";
 
-
-// array of objects 
 
 
 class Random extends React.Component {
-
-   // State
-   state = {
-    cards: [],
+  // State
+  state = {
+    //use for selection
+    selection: 'elon',
     searchValue: [],
     displayCards: true,
 
-    user: ["from:elonmusk","from:NASA","from:neiltyson","from:Cmdr_Hadfield"],
-    userStateArray: ['elonTweet','nasaTweet',"neilTweet",'capTweet'],
-    elonTweet:[],
-    neilTweet:[],
-    nasaTweet:[],
-    capTweet:[],
+    //use for api data
+    user: [
+      "from:elonmusk",
+      "from:NASA",
+      "from:neiltyson",
+      "from:Cmdr_Hadfield"
+    ],
+    userStateArray: ["elonTweet", "nasaTweet", "neilTweet", "capTweet"],
 
+    //use for array to display tweet
+    elonTweet: [],
+    neilTweet: [],
+    nasaTweet: [],
+    capTweet: []
   };
 
-//  fetch on load all tweets
-componentDidMount = async ()=> {
+  //  fetch on load all tweets
+  componentWillMount = async () => {
+    for (let i = 0; i < this.state.user.length; i++) {
+      let search = this.state.user[i];
+      const state = this.state.userStateArray[i];
 
+      try {
+        const response = await fetch(
+          withQuery("api/list", {
+            q: search
+          })
+        );
 
-  for (let i = 0; i < this.state.user.length; i++) {
-    let search = this.state.user[i];
-    const state = this.state.userStateArray[i];
+        const data = await response.json();
 
-    try{
-      const response= await fetch(withQuery('api/list', {
-        q: search,
-      }))
-  
-      const data = await response.json();
-
-      this.setState({[state]:data});
+        this.setState({ [state]: data });
+      } catch (error) {
+        console.log("there is an error:", error);
+        console.error(error);
+      }
+      // console.log(state)
+      this.setState({ displayCards: true });
     }
-    catch(error){
-      console.log("there is an error:", error)
-      console.error(error);
-    } 
-    console.log(state)
-    this.setState({displayCards:true});
-    }
-    console.log('elonTweet: ', this.state.elonTweet);
-    console.log('neil: ', this.state.neilTweet);
-    console.log('nasaTweet: ', this.state.nasaTweet);
-    console.log('cap: ', this.state.cap);
-  }
-
-  
-
-  logall = () =>{
-    console.log("elon:",this.state.elonTweet)
-  }
+    console.log("elonTweet: ", this.state.elonTweet);
+    // console.log('neil: ', this.state.neilTweet);
+    // console.log('nasaTweet: ', this.state.nasaTweet);
+    // console.log('cap: ', this.state.cap);
+  };
 
   //SELECTION OF PEOPLE
-  selectElon = () =>{
+  selectElon = () => {
+    this.setState({
+      selection: "elon"
+    });
+    console.log("select elon function 'selection:':", this.state.selection);
+  };
+
+  selectNasa = () => {
+    this.setState({
+      selection: "nasa"
+    });
+    console.log("Select Elon Array:", this.state.selection);
+  };
+  
+
+  selectNeil = () => {
     this.setState({
       searchValue: [],
-      searchValue: this.state.elonTweet,
+      searchValue: this.state.neilTweet
     });
     console.log(this.state.searchValue);
-  }
+  };
 
-  selectNasa = () =>{
+  selectCap = () => {
     this.setState({
       searchValue: [],
-      searchValue: this.state.nasaTweet,
+      searchValue: this.state.capTweet
     });
     console.log(this.state.searchValue);
-  }
+  };
 
-  selectNeil = () =>{
+  //change the display state (use to display or not a component)
+  displayAllCards = () => {
     this.setState({
-      searchValue: [],
-      searchValue: this.state.neilTweet,
+      displayCards: true
     });
-    console.log(this.state.searchValue);
-  }
-
-  selectCap = () =>{
-    this.setState({
-      searchValue: [],
-      searchValue: this.state.capTweet,
-    });
-    console.log(this.state.searchValue);
-  }
-
-  displayAllCards =() =>{
-    this.setState({
-          displayCards: true
-        });
     console.log(this.state.displayCards);
-
-  }
+  };
 
   //reset the cards array selected
   resetCard = () => {
-    let resetArr = []
+    let resetArr = [];
     this.setState({
-      selectedCards: resetArr
+      searchValue: resetArr
     });
-  }
-
+  };
 
   render() {
     return (
-      
       <div className="Container">
         <Navbar />
-        <RandomRender
-          title="Random Tweet Page"
-          cards={this.state.cards}
+        <div className="jumbotron jumbotron-fluid text-center border-primary">
+          <h1 className="display-4"> Random Tweet Page </h1>
+          <p>Select a user</p>
 
-          elon={this.state.cards}
+          {/* image */}
+          <div>
+            <Images
+              // pass array of user as props
+              elon={this.state.elonTweet}
+              nasa={this.state.nasaTweet}
+              neil={this.state.neilTweet}
+              cap={this.state.capTweet}
+              // pass usefull function as props
+              selectElon={this.selectElon}
+              selectNasa={this.selectNasa}
+              selectNeil={this.selectNeil}
+              selectCap={this.selectCap}
+              reset={this.resetCard}
+            />
+          </div>
+        </div>
 
+        <Result
+
+          // pass array of user as props
+          elon={this.state.elonTweet}
+          nasa={this.state.nasaTweet}
+          neil={this.state.neilTweet}
+          cap={this.state.capTweet}
+
+           // pass usefull function as props
+          selection={this.state.selection}
           searchValue={this.state.searchValue}
-          displayCards = {this.state.displayCards}
-          
-          catchData={this.catchData}
-          selectElon = {this.selectElon}
-          selectNasa = {this.selectNasa}
-          selectNeil = {this.selectNeil}
-          selectCap = {this.selectCap}
-          displayAllCards = {this.displayAllCards}
-
-
+          displayCards={this.state.displayCards}
+          selectElon={this.selectElon}
+          selectNasa={this.selectNasa}
+          selectNeil={this.selectNeil}
+          selectCap={this.selectCap}
+          displayAllCards={this.displayAllCards}
+          reset={this.resetCard}
         />
-      
+        <Footer />
       </div>
-     
-   
-      
     );
   }
 }

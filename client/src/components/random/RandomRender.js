@@ -1,71 +1,57 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cards from "./Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import Container from 'react-bootstrap/Container'
 
 
-class RandomRender extends React.Component {
- 
-  render(props) {
- 
+class Result extends React.Component {
+
+  //Select the state array that will display the tweet string
+  selector = (props) =>{
+    let  userSelection = [];
+    if (this.props.selection == "elon"){
+      userSelection = this.props.elon;
+    }else if (this.props.selection == "nasa") {
+      userSelection = this.props.nasa;
+      
+    }else{
+      userSelection = ["this.props.selection is equal to nothing, userSelection will be invalid"]
+    }
+    console.log("selection:",this.props.selection)
+    console.log("userSelection value :",userSelection)
+    return userSelection
+    
+    }
+
+
+  render(props,userSelection) {
+    this.selector();
+    
+    // Failsafe on userSelection variable
+    if(userSelection == undefined)
+        return (<Container>userSelection is undefined!</Container>)
+    
+
     return (
-     
-          <div className="jumbotron jumbotron-fluid text-center border-primary">
-            <h1 className="display-4"> {this.props.title} </h1>
-            <p> Display Tweet From these User </p>
-            <p> Number of Cards: {this.props.cards.length} </p>
+      <div className="jumbotron jumbotron-fluid text-center border-primary">
+        <p> result </p>
 
-            {/* Display all button */}
-            <button
-              onClick={(event) => {this.props.selectElon();this.props.displayAllCards()}}
-              type="button"
-              className="btn btn-secondary mx-4"
-            >
-              Elon Musk
-            </button>
-            <button
-              onClick={(event) => {this.props.selectNasa();this.props.displayAllCards()}}
-              type="button"
-              className="btn btn-secondary mx-4"
-            >
-              N.A.S.A
-            </button>
-
-            <button
-                onClick={(event) => {this.props.selectNeil();this.props.displayAllCards()}}
-              type="button"
-              className="btn btn-secondary mx-4"
-            >
-            Neil D
-            </button>
-
-            <button
-                onClick={(event) => {this.props.selectCap();this.props.displayAllCards()}}
-              type="button"
-              className="btn btn-secondary mx-4"
-            >
-            Chris Hadfield
-            </button>
-
-
-            {/* Display all Cards */}
-          <div className="row">
-          {this.props.displayCards === true &&
-              this.props.searchValue.map(cards => (
-            <div className = "col">
-            <Cards
-                  profile={cards.user.profile_image_url} 
-                  user={cards.user.screen_name} 
-                  tweet={cards.text} 
-                  date={cards.created_at} />
-                 
-            </div>
-             ))}
-            </div>
-            {/* Display all Cards */}
+        {/* Display all Cards */}
+        <div className="Container">
+          <div className="Row">
+            
+              {this.props.displayCards === true &&
+                userSelection.map(cards => (
+                  <Cards source={cards.id_str} />
+                ))}
+            
           </div>
-     
+          {/* Display all Cards */}
+        </div>
+      </div>
     );
   }
 }
 
-export default RandomRender;
+export default Result;

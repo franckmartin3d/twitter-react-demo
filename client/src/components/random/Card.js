@@ -1,26 +1,34 @@
-import React from "react";
+
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed'
 
-const Cards = props => {
-  return (
-    <Card border="success" style={{ width: '18rem' }}>
- 
-    <Card.Img variant="top" src={props.profile} roundedCircle />
-    <Card.Body>
-      <Card.Title>{props.user}</Card.Title>
 
-      <Card.Text>
-      {props.tweet}
-      </Card.Text>
+class Cards extends React.Component {
 
-      <Card.Text>
-      {props.date}
-      </Card.Text>
 
-    </Card.Body>
-  </Card>
+  componentWillUpdate= () =>{
+    console.log("updating cards")
+  }
+
+  render(props) {
+    return (
+
+   
+     <TwitterTweetEmbed
+      tweetId={this.props.source}
+      />
+  
+
+
+   
   );
-};
+}
+}
+
 export default Cards;
+
+
 
