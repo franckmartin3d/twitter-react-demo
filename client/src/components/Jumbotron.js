@@ -25,8 +25,8 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
                 <Button 
                     variant="outline-dark"
                     size="lg"
-                    as= {Link} to="/random">
-                    Random Twitter
+                    as= {Link} to="/StarTweetPage">
+                    Twitter User
                 </Button>
 
             </ButtonToolbar>
