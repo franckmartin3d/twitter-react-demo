@@ -57,7 +57,7 @@ class Random extends Component {
         <Row>
           { this.state.tweets.length > 0
             ? this.state.tweets.map(tweet => <TweetCard src={"fdsaf"} />)
-            : null }
+            : console.log("this.state.tweets is empty") }
         </Row>
       </Container>
       <Footer />

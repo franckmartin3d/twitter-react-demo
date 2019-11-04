@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import UserCard from "./UserCard";
+import EmbedResult from "./EmbedResult";
+
 import withQuery from "with-query";
 
 
@@ -31,8 +33,10 @@ class StarTweetPage extends Component {
           "https://pbs.twimg.com/profile_images/620788674414952456/y_ozO3uO_200x200.png"
       }
     ],
-    tweets: [],
-    select:""
+    select:"",
+    tweets: "test",
+
+    displayTweet: false
     
   };
   select = async(username) => {
@@ -44,12 +48,14 @@ class StarTweetPage extends Component {
     );
 
     const data = await response.json();
-    console.log(data);
+    console.log("data from api",data);
 
     this.setState({
       selection: username,
-      tweets: [data]
+      tweets: [data],
+      displaytweet: true
     });
+    console.log("status of state.tweet = ",this.state.tweets);
   }
 
   render() {
@@ -69,6 +75,22 @@ class StarTweetPage extends Component {
                 <div className="row">
                     {/* Map image and username from user state */}
                     {this.state.users.map(user => <UserCard imageUrl={user.profileImageUrl} username={user.username} select={this.select}/>)}                  
+                </div>
+            </section>
+
+
+
+            {/* result */}
+            <section className="bg-1">
+                <div className="row">
+
+
+                {this.state.displaytweet === true &&
+                this.state.tweets.length > 0 ?
+                this.state.tweets.map(tweets => (
+                  <EmbedResult source={tweets.id_str} />
+                )):console.log("this.state.tweets is empty")}
+                        
                 </div>
             </section>
 

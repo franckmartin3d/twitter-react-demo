@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Cards from "../random/Card";
+import Cards from "../random/backupcards";
 
 
 class Searchrender extends React.Component {
