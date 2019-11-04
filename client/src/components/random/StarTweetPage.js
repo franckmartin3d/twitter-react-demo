@@ -13,22 +13,22 @@ class StarTweetPage extends Component {
       {
         username: "elonmusk",
         profileImageUrl:
-          "http://pbs.twimg.com/profile_images/1189352750972227584/SuH9KpDT_normal.jpg"
+          "https://pbs.twimg.com/profile_images/1190287557927538688/AYAstym8_200x200.jpg"
       },
       {
         username: "NASA",
         profileImageUrl:
-          "http://pbs.twimg.com/profile_images/1189352750972227584/SuH9KpDT_normal.jpg"
+          "https://pbs.twimg.com/profile_images/1091070803184177153/TI2qItoi_200x200.jpg"
       },
       {
         username: "neiltyson",
         profileImageUrl:
-          "http://pbs.twimg.com/profile_images/1189352750972227584/SuH9KpDT_normal.jpg"
+          "https://pbs.twimg.com/profile_images/74188698/NeilTysonOriginsA-Crop_200x200.jpg"
       },
       {
         username: "Cmdr_Hadfield",
         profileImageUrl:
-          "http://pbs.twimg.com/profile_images/1189352750972227584/SuH9KpDT_normal.jpg"
+          "https://pbs.twimg.com/profile_images/620788674414952456/y_ozO3uO_200x200.png"
       }
     ],
     tweets: [],
