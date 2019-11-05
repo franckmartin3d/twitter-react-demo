@@ -4,15 +4,18 @@ import Searchrender from './searchRender';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import withQuery from 'with-query';
+import SearchForm from "./SearchForm";
+import EmbedResult from "../random/EmbedResult";
 
 
 class Search extends Component {
 
   // State
   state = {
-    cards: [],
+    result: [],
     searchValue: '',
-    arrow: false
+    arrow: false,
+    displaytweet: false
   };
 
  //Send data to api
@@ -25,7 +28,12 @@ class Search extends Component {
     }))
 
     const data = await response.json();
-    this.setState({cards:data})
+    this.setState({
+      result:data,
+      displaytweet: true
+    })
+
+    console.log("this is cards state after get: ",this.state.result)
   }
   catch(error){
     console.log("there is an error:", error)
@@ -48,7 +56,7 @@ class Search extends Component {
 
   handleMoreTweet = () =>{
     // Set true if more than 6 cards
-    if (this.state.cards.length > 6 ){
+    if (this.state.result.length > 6 ){
       this.setState({arrow:true})
       
     }
@@ -59,21 +67,44 @@ class Search extends Component {
   render(){
     return (
       
-        <div className ="Container">
+      // Navbar
+        <div className ="container">
           <Navbar />
-          <Searchrender 
-            cards={this.state.cards}
-            searchValue={this.state.searchValue}
-            arrow={this.state.arrow}
-            
-            catchData={this.catchData}
-            handleSearchChange={this.handleSearchChange}
-            handleSearchSubmit={this.handleSearchSubmit}
-          
-          />
-          <Footer />
-        </div>
+        
       
+        <section className="bg-1">
+            <div>
+                <SearchForm 
+                  searchValue={this.state.searchValue}
+                  handleSearchChange={this.handleSearchChange}
+                  catchData={this.catchData}
+                />
+            </div>
+        </section>
+      
+        {/* result section */}
+
+        <section className="bg-1">
+                <div className="row">
+
+                {
+                this.state.displaytweet === true && this.state.result.length > 0 
+                  ? this.state.result.map(tweets => {
+                      console.log("this is the value of this.state.result: ", this.state.result);
+                      console.log("this is the tweets parameter in .map: ", tweets);
+                      return (<EmbedResult source={tweets.id_str} key={tweets.id_str} />);
+                    })
+                  : console.log("this.state.tweets is empty")
+               }
+                        
+                </div>
+            </section>
+
+
+        
+          <Footer />
+        
+      </div>
      );
   }
   
