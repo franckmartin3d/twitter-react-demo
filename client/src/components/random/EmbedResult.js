@@ -13,7 +13,6 @@ class EmbedResult extends Component {
         console.log("prop needed for tweet: ",this.props.source)
         return (
             <div className="Container">
-                   Loading Tweets...
                    <TwitterTweetEmbed
                         tweetId={this.props.source} key={this.props.key}
                     />
