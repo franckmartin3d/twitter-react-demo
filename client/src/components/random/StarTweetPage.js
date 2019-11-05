@@ -34,7 +34,7 @@ class StarTweetPage extends Component {
       }
     ],
     select:"",
-    tweets: "test",
+    tweets: [],
 
     displayTweet: false
     
@@ -52,7 +52,7 @@ class StarTweetPage extends Component {
 
     this.setState({
       selection: username,
-      tweets: [data],
+      tweets: data,
       displaytweet: true
     });
     console.log("status of state.tweet = ",this.state.tweets);
@@ -60,7 +60,7 @@ class StarTweetPage extends Component {
 
   render() {
     return (
-      <div className="Container">
+      <div className="container">
         {/* Navbar */}
         <section className="bg-1">
           <Navbar />
@@ -70,13 +70,18 @@ class StarTweetPage extends Component {
         <div className="jumbotron jumbotron-fluid text-center border-primary">
             <h1 className="display-4"> Random Tweet Page </h1>
             <p>Select a user</p>
-
-            <section className="bg-1">
-                <div className="row">
+            
+              <div className="row">
+               
+                <div className= "col md={auto}"> 
+                    <div className="row">
                     {/* Map image and username from user state */}
                     {this.state.users.map(user => <UserCard imageUrl={user.profileImageUrl} username={user.username} select={this.select}/>)}                  
+                    </div>
+
                 </div>
-            </section>
+               
+              </div>
 
 
 
@@ -84,12 +89,15 @@ class StarTweetPage extends Component {
             <section className="bg-1">
                 <div className="row">
 
-
-                {this.state.displaytweet === true &&
-                this.state.tweets.length > 0 ?
-                this.state.tweets.map(tweets => (
-                  <EmbedResult source={tweets.id_str} />
-                )):console.log("this.state.tweets is empty")}
+                {
+                this.state.displaytweet === true && this.state.tweets.length > 0 
+                  ? this.state.tweets.map(tweets => {
+                      console.log("this is the value of this.state.tweets: ", this.state.tweets);
+                      console.log("this is the tweets parameter in .map: ", tweets);
+                      return (<EmbedResult source={tweets.id_str} key={tweets.id_str} />);
+                    })
+                  : console.log("this.state.tweets is empty")
+               }
                         
                 </div>
             </section>
