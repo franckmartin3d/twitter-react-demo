@@ -68,10 +68,23 @@ class Search extends Component {
     return (
       
       // Navbar
+        
         <div className ="container">
           <Navbar />
-        
-      
+
+          {/* Jumbotron */}
+          <div className="jumbotron jumbotron-fluid text-center border-primary">
+          <h1
+            className="display-4"
+            style={{
+              fontFamily: "Georgia, serif",
+              fontSize: "60px",
+              fontVariant: "small-caps"
+            }}
+          >
+            Search Tweets
+          </h1>
+          <p>Search for Tweets</p>
         <section className="bg-1">
             <div>
                 <SearchForm 
@@ -102,8 +115,9 @@ class Search extends Component {
 
 
         
-          <Footer />
-        
+         
+        </div>
+        <Footer />
       </div>
      );
   }

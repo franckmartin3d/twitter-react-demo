@@ -72,13 +72,13 @@ class StarTweetPage extends Component {
               fontFamily: "Georgia, serif",
               fontSize: "60px",
               fontVariant: "small-caps"
-            }}>
+            }}
+          >
             Space Tweets
           </h1>
           <p>Select user</p>
 
           <div className="container" style={{ textAlign: "center" }}>
-
             <div className="row">
               {/* Map image and username from user state */}
               {this.state.users.map(user => (
@@ -111,7 +111,6 @@ class StarTweetPage extends Component {
                 : console.log("this.state.tweets is empty")}
             </div>
           </section>
-
         </div>
 
         {/* Footer */}
