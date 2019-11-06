@@ -10,10 +10,10 @@ import {Link} from 'react-router-dom';
         <Link to="/"><button type="button" className="btn btn-secondary">Home</button></Link>
     </li>
     <li className="nav-item">
-        <Link to="/search"><button type="button" className="btn btn-secondary">Tweet Searcher</button></Link>
+        <Link to="/search"><button type="button" className="btn btn-secondary">Tweet Search</button></Link>
     </li>
     <li className="nav-item">
-    <Link to="/Random"><button type="button" className="btn btn-secondary">Random Tweets</button></Link>
+    <Link to="/StarTweetPage"><button type="button" className="btn btn-secondary">Space Tweets</button></Link>
     </li>
   </ul>
 
