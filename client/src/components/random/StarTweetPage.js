@@ -7,7 +7,6 @@ import EmbedResult from "./EmbedResult";
 
 import withQuery from "with-query";
 
-
 class StarTweetPage extends Component {
   state = {
     // Users.username, user.profileImageUrl
@@ -33,30 +32,29 @@ class StarTweetPage extends Component {
           "https://pbs.twimg.com/profile_images/620788674414952456/y_ozO3uO_200x200.png"
       }
     ],
-    select:"",
+    select: "",
     tweets: [],
 
     displayTweet: false
-    
   };
-  select = async(username) => {
+  select = async username => {
     console.log(username);
     const response = await fetch(
       withQuery("api/list", {
-        q: 'from:' + username
+        q: "from:" + username
       })
     );
 
     const data = await response.json();
-    console.log("data from api",data);
+    console.log("data from api", data);
 
     this.setState({
       selection: username,
       tweets: data,
       displaytweet: true
     });
-    console.log("status of state.tweet = ",this.state.tweets);
-  }
+    console.log("status of state.tweet = ", this.state.tweets);
+  };
 
   render() {
     return (
@@ -68,42 +66,54 @@ class StarTweetPage extends Component {
 
         {/* UserCards */}
         <div className="jumbotron jumbotron-fluid text-center border-primary">
-            <h1 className="display-4"> Random Tweet Page </h1>
-            <p>Select a user</p>
-            
-              <div className="row">
-               
-                <div className= "col md={auto}"> 
-                    <div className="row">
-                    {/* Map image and username from user state */}
-                    {this.state.users.map(user => <UserCard imageUrl={user.profileImageUrl} username={user.username} select={this.select}/>)}                  
-                    </div>
+          <h1
+            className="display-4"
+            style={{
+              fontFamily: "Georgia, serif",
+              fontSize: "60px",
+              fontVariant: "small-caps"
+            }}>
+            Space Tweets
+          </h1>
+          <p>Select user</p>
 
-                </div>
-               
-              </div>
+          <div className="container" style={{ textAlign: "center" }}>
 
+            <div className="row">
+              {/* Map image and username from user state */}
+              {this.state.users.map(user => (
+                <UserCard
+                  imageUrl={user.profileImageUrl}
+                  username={user.username}
+                  select={this.select}
+                />
+              ))}
+            </div>
+          </div>
 
-
-            {/* result */}
-            <section className="bg-1">
-                <div className="row">
-
-                {
-                this.state.displaytweet === true && this.state.tweets.length > 0 
-                  ? this.state.tweets.map(tweets => {
-                      console.log("this is the value of this.state.tweets: ", this.state.tweets);
-                      console.log("this is the tweets parameter in .map: ", tweets);
-                      return (<EmbedResult source={tweets.id_str} key={tweets.id_str} />);
-                    })
-                  : console.log("this.state.tweets is empty")
-               }
-                        
-                </div>
-            </section>
+          {/* result */}
+          <section className="bg-1">
+            <div className="row">
+              {this.state.displaytweet === true && this.state.tweets.length > 0
+                ? this.state.tweets.map(tweets => {
+                    console.log(
+                      "this is the value of this.state.tweets: ",
+                      this.state.tweets
+                    );
+                    console.log(
+                      "this is the tweets parameter in .map: ",
+                      tweets
+                    );
+                    return (
+                      <EmbedResult source={tweets.id_str} key={tweets.id_str} />
+                    );
+                  })
+                : console.log("this.state.tweets is empty")}
+            </div>
+          </section>
 
         </div>
-           
+
         {/* Footer */}
         <section className="bg-1">
           <Footer />

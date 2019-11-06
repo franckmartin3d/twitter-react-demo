@@ -11,17 +11,35 @@ export class UserCard extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-6" style={{color: "red"}}>
-          <Image
-            src={this.props.imageUrl}
-            onClick={event => {
-              this.props.select(this.props.username);
-            }}
-            roundedCircle
-          />
-          <h3>{this.props.username}</h3>
-        </div>
+      <div
+        className="col" style={
+            {
+            padding: "10px",
+            width: "60%",
+       
+          }}
+
+
+      
+      >
+        <Image style={
+            {
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "10px",
+            height: "auto",
+            width: "50%",
+            backgroundColor: "white",
+            boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+          }}
+          src={this.props.imageUrl}
+          onClick={event => {
+            this.props.select(this.props.username);
+          }}
+          roundedCircle
+        />
+
+        <h5>{this.props.username}</h5>
       </div>
     );
   }

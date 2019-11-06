@@ -12,7 +12,14 @@ class EmbedResult extends Component {
     render(props) {
         console.log("prop needed for tweet: ",this.props.source)
         return (
-            <div className="Container">
+            <div className="Container"
+            
+             style={{display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "10px",
+                height: "auto",
+                width: "50%",}}>
                    <TwitterTweetEmbed
                         tweetId={this.props.source} key={this.props.key}
                     />
