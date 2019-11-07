@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 
 export class UserCard extends Component {

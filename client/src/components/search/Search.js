@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Searchrender from './searchRender';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import withQuery from 'with-query';

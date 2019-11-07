@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import {Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 class HomeButtons extends Component {
     render(props) {
