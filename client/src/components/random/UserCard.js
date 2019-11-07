@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "react-bootstrap/Image";
+import styled from "styled-components";
+
+// hover effect
+const Hover = styled.div`
+  background-color: white;
+  
+  position: relative;
+  &:hover {
+    background-color: red;
+  };
+`
+
 
 export class UserCard extends Component {
   componentWillUpdate = props => {
@@ -8,6 +20,9 @@ export class UserCard extends Component {
   };
 
   render() {
+
+ 
+
     return (
       <div
         className="col" style={
@@ -17,18 +32,23 @@ export class UserCard extends Component {
        
           }}
 
-
+      
       
       >
         <Image style={
             {
+              
             alignItems: "center",
             justifyContent: "center",
             padding: "10px",
             height: "auto",
             width: "50%",
+            cursor: "pointer",
             backgroundColor: "white",
             boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+            "&:hover": {
+              backgroundColor: "red"}
+            
           }}
           src={this.props.imageUrl}
           onClick={event => {
@@ -36,9 +56,17 @@ export class UserCard extends Component {
           }}
           roundedCircle
         />
+    
+
 
         <h5>{this.props.username}</h5>
       </div>
+
+    
+  
+      
+
+
     );
   }
 }
