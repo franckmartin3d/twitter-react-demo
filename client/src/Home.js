@@ -20,6 +20,8 @@ class Home extends Component {
             This is a simple app that use the react framework to showcase some
             twitter account
           </p>
+
+          {/* Buttons */}
           <div className="row" >
             <HomeButtons 
               link="/Search"

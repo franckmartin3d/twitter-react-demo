@@ -14,7 +14,7 @@ class StarTweetPage extends Component {
       {
         username: "elonmusk",
         profileImageUrl:
-          "https://pbs.twimg.com/profile_images/1190287557927538688/AYAstym8_200x200.jpg"
+          "https://pbs.twimg.com/profile_images/1192598203679395840/Vyf3YlG5_200x200.jpg"
       },
       {
         username: "NASA",
@@ -37,6 +37,8 @@ class StarTweetPage extends Component {
 
     displayTweet: false
   };
+
+  // Selection and retrival of tweets
   select = async username => {
     console.log(username);
     const response = await fetch(
