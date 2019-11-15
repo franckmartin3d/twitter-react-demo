@@ -16,7 +16,7 @@ class SearchForm extends Component {
               className="form-control"
               placeholder="Search"
             />
-
+            
             <div className="input-group-append">
               <button
                 className="btn btn-secondary"
