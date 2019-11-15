@@ -1,4 +1,3 @@
-## twitter-react-demo
 
 # Twitter Showcase App
 
@@ -12,27 +11,29 @@ Web App  can be viewed on Heroku.
 
 
 # How to run from github
-* clone repository
-* Install dependancy in root folder and client folder via "npm Install"
-* Run locally from the root folder using the command "npm run dev"
+1. clone repository
+3. Install dependancy in root folder and client folder via "npm Install"
+3. Run locally from the root folder using the command "npm run dev"
 
 # Tools used and package used to create this app
 
-    - Visual Studio Code
-    - Github
-    - JS-React
-    - Node.js
-    - Postman
-    - Heroku
+    * Visual Studio Code
+    * Github
+    * Javascript
+    * React
+    * Node.js
+    * express
+    * Postman
+    * Heroku
 
     Package
-    - Bootstarp
-    - axios
-    - concurrently
-    - express
-    - react-twitter-embed
-    - twitter
-    - with-query
+    * Bootstarp
+    * axios
+    * concurrently
+    * express
+    * react-twitter-embed
+    * twitter
+    * with-query
     
 
 
