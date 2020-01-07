@@ -40,7 +40,6 @@ class StarTweetPage extends Component {
 
   // Selection and retrival of tweets
   select = async username => {
-    console.log(username);
     const response = await fetch(
       withQuery("api/list", {
         q: "from:" + username
@@ -48,14 +47,13 @@ class StarTweetPage extends Component {
     );
 
     const data = await response.json();
-    console.log("data from api", data);
 
     this.setState({
       selection: username,
       tweets: data,
       displaytweet: true
     });
-    console.log("status of state.tweet = ", this.state.tweets);
+    
   };
 
   render() {
@@ -98,19 +96,14 @@ class StarTweetPage extends Component {
             <div className="row">
               {this.state.displaytweet === true && this.state.tweets.length > 0
                 ? this.state.tweets.map(tweets => {
-                    console.log(
-                      "this is the value of this.state.tweets: ",
-                      this.state.tweets
-                    );
-                    console.log(
-                      "this is the tweets parameter in .map: ",
-                      tweets
-                    );
+
+                    
                     return (
                       <EmbedResult source={tweets.id_str} key={tweets.id_str} />
                     );
                   })
-                : console.log("this.state.tweets is empty")}
+                : 
+                console.log("this.state.tweets is empty")}
             </div>
           </section>
         </div>

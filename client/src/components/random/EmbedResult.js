@@ -6,11 +6,11 @@ import { TwitterTweetEmbed} from 'react-twitter-embed'
 class EmbedResult extends Component {
 
     componentWillUpdate= (props) =>{
-        console.log("updating cards")
+       
       }
     
     render(props) {
-        console.log("prop needed for tweet: ",this.props.source)
+        
         return (
             <div className="Container"
             

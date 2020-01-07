@@ -20,7 +20,6 @@ class Search extends Component {
  //Send data to api
  catchData = async () =>{
   let search = this.state.searchValue
-  console.log("searching for",this.state.searchValue);
   try{
     const response= await fetch(withQuery('api/list', {
       q: search,
@@ -32,7 +31,6 @@ class Search extends Component {
       displaytweet: true
     })
 
-    console.log("this is cards state after get: ",this.state.result)
   }
   catch(error){
     console.log("there is an error:", error)
@@ -59,7 +57,6 @@ class Search extends Component {
       this.setState({arrow:true})
       
     }
-    console.log('arrow set to ',this.state.arrow)
   }
 
 
@@ -102,8 +99,6 @@ class Search extends Component {
                 {
                 this.state.displaytweet === true && this.state.result.length > 0 
                   ? this.state.result.map(tweets => {
-                      console.log("this is the value of this.state.result: ", this.state.result);
-                      console.log("this is the tweets parameter in .map: ", tweets);
                       return (<EmbedResult source={tweets.id_str} key={tweets.id_str} />);
                     })
                   : console.log("this.state.tweets is empty")

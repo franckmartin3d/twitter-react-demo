@@ -8,7 +8,6 @@ export class UserCard extends Component {
 
   // debug logs
   componentWillUpdate = props => {
-    console.log("updating cards");
   };
 
   render() {
