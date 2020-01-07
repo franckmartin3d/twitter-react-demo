@@ -58,6 +58,23 @@ class StarTweetPage extends Component {
   };
 
   render() {
+    // Logic
+    const userCards =  this.state.users.map(user => (
+      <UserCard
+      imageUrl={user.profileImageUrl}
+      username={user.username}
+      select={this.select}
+      />
+    ));
+
+    const results = this.state.displaytweet === true && this.state.tweets.length > 0
+      ? this.state.tweets.map(tweets => {
+          return (
+            <EmbedResult source={tweets.id_str} key={tweets.id_str} />
+          );
+        })
+      : null;
+
     return (
       <div className="container">
         {/* Navbar */}
@@ -75,29 +92,14 @@ class StarTweetPage extends Component {
           <div className="container" style={{ textAlign: "center" }}>
             <div className="row">
               {/* Map image and username from user state */}
-              {this.state.users.map(user => (
-                <UserCard
-                  imageUrl={user.profileImageUrl}
-                  username={user.username}
-                  select={this.select}
-                />
-              ))}
+               {userCards} 
             </div>
           </div>
 
           {/* result */}
           <section className="bg-1">
             <div className="row">
-              {this.state.displaytweet === true && this.state.tweets.length > 0
-                ? this.state.tweets.map(tweets => {
-
-                    
-                    return (
-                      <EmbedResult source={tweets.id_str} key={tweets.id_str} />
-                    );
-                  })
-                : 
-                console.log("this.state.tweets is empty")}
+              {results}
             </div>
           </section>
         </div>
