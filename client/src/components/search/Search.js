@@ -71,13 +71,7 @@ class Search extends Component {
           {/* Jumbotron */}
           <div className="jumbotron jumbotron-fluid text-center border-primary">
           <h1
-            className="display-4"
-            style={{
-              fontFamily: "Georgia, serif",
-              fontSize: "60px",
-              fontVariant: "small-caps"
-            }}
-          >
+            className="main-title">
             Search Tweets
           </h1>
           <p>Search for Tweets</p>

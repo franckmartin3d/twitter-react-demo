@@ -4,6 +4,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import UserCard from "./UserCard";
 import EmbedResult from "./EmbedResult";
+import "./StarTweet.css";
 
 import withQuery from "with-query";
 
@@ -66,14 +67,7 @@ class StarTweetPage extends Component {
 
         {/* UserCards */}
         <div className="jumbotron jumbotron-fluid text-center border-primary">
-          <h1
-            className="display-4"
-            style={{
-              fontFamily: "Georgia, serif",
-              fontSize: "60px",
-              fontVariant: "small-caps"
-            }}
-          >
+          <h1 className="main-title">
             Space Tweets
           </h1>
           <p>Select user</p>
